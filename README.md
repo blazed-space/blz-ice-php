@@ -43,7 +43,6 @@ This project uses:
 - [FuelPHP](https://fuelphp.com/)
 - [BundleFU](https://github.com/dotsunited/BundleFu)
 - [ICE](https://github.com/blazed-space/ice)
-- [BLZ-FIRE](https://github.com/blazed-space/blz-fire)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Kitwind](https://kitwind.io/products/kometa/)
 - [MambaUI](https://mambaui.com/)
