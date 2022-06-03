@@ -440,7 +440,7 @@ return array(
 		 */
 
 		 'packages' => array(
-		 	//'orm',
+		 	'orm',
 			'ice' => VENDORPATH . 'blazed-labs/ice/',
 		 ),
 		/**
@@ -484,6 +484,7 @@ return array(
 
 		 'config' => array(
              /*'site', 'db'*/
+             'db'
         ),
 
 		/**

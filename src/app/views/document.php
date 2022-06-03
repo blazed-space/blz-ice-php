@@ -126,20 +126,6 @@
                 <!-- // -->
                 <?php if(isset($body)): echo $body; endif; ?>
                 <!-- // -->
-                <!--
-                    <blz-app>
-                        <blz-header>
-                            ...
-                        </blz-header>
-                        <main>
-                            ...
-                        </main>
-                        <blz-footer>
-                            ...
-                        </blz-footer>
-                    </blz-app>
-                -->
-                <!-- // -->
                 <!-- JS Includes -->
                 <section id="blz-js">
                     <!-- // -->

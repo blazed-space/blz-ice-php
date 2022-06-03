@@ -1,4 +1,4 @@
-<?php if(isset($menu) && isset($page)): ?>
+<?php if(isset($menu) && isset($page) && isset($auth)): ?>
 
     <header>
         <nav class="flex items-center bg-gray-800 p-3 flex-wrap">
@@ -12,7 +12,7 @@
                 <!-- Burger Menu -->
                 <i class="material-icons">menu</i>
             </button>
-            <div class="lg:hidden md:block sm:block w-full">
+            <div class="lg:hidden md:block sm:block w-full text-center">
 	            <div class="hidden top-navbar w-full" id="blz-menu-mobile">
 	                <div class="block lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
 	                    <?php foreach($menu as $i => $menu_item): ?>
@@ -37,6 +37,41 @@
                 </div>
             </div>
         </nav>
+        <div class="flex bg-blue-700 p-2 w-full flex-wrap">
+        	<?php if($auth->isLoggedIn()): ?>
+        		<div class="inline-flex justify-start">
+        			<span class="text-blue-200">
+        				Logged in as:
+        			</span>
+    				<a class="text-blue-100 hover:text-white hover:underline ml-2" href="<?php echo Uri::base(); ?>profile/<?php echo $auth->getUserId(); ?>/">
+    					<?php echo $auth->getUsername(); ?>
+    				</a>
+        		</div>
+        		<div class="inline-flex justify-end ml-auto">
+        			<a class="text-blue-100 hover:text-white hover:underline" href="<?php echo Uri::base(); ?>account/">
+        				Account
+        			</a>
+        			<a class="text-blue-100 hover:text-white ml-5 hover:underline" href="<?php echo Uri::base(); ?>logout/">
+        				Logout
+        			</a>
+        		</div>
+        	  <?php else: ?>
+        		<div class="inline-flex justify-start">
+        			<span class="text-blue-200">
+        				Not logged in.
+        			</span>
+        		</div>
+        		<div class="inline-flex justify-end ml-auto">
+        			<a class="text-blue-100 hover:text-white hover:underline" href="<?php echo Uri::base(); ?>login/">
+        				Login
+        			</a>
+        			<a class="text-blue-100 hover:text-white ml-5 hover:underline" href="<?php echo Uri::base(); ?>register/">
+        				Register
+        			</a>
+        		</div>
+        	  <?php endif; ?>
+        	</div>
+        </div>
     </header>
 
 <?php endif; ?>

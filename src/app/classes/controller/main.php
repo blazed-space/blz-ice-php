@@ -31,8 +31,19 @@ class Controller_Main extends Controller_Ice{
     }
     public function action_forgot(){
     	$this->layout->page = 5;
-        $this->layout->title = "Reset Password";
+        $this->layout->title = "Reset Password (Step 1/2)";
         $this->layout->page_layout = 'full';
         $this->layout->content = 'forgot';
+    }
+    public function action_reset($selector, $token){
+    	if($selector === "" || $token === ""){
+    		Response::redirect('forgot');
+    	}
+    	$this->layout->page = 9000;
+    	$this->layout->page_data['selector'] = $selector;
+    	$this->layout->page_data['token'] = $token;
+        $this->layout->title = "Reset Password (Step 2/2)";
+        $this->layout->page_layout = 'full';
+        $this->layout->content = 'reset';
     }
 }

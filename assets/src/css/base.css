@@ -33,3 +33,14 @@ html, body, section, main, footer, div {
 body{
     overflow-y:scroll;
 }
+
+/* Code/Terminal Windows */
+code{
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	background: rgba(0,0,0,0.7);
+	color: rgba(255,255,255,0.7);
+}

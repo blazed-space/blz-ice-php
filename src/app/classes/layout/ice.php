@@ -78,11 +78,11 @@ class Layout_Ice {
             $layout  = Layout for page (default: basic)
             @Returns formatted layout.
     */
-    public static function do_layout($content, $title = '', $page = 0, $layout = 'basic'){
+    public static function do_layout($content, $title = '', $page = 0, $layout = 'basic', $auth = null, $page_data = array()){
         $l = View::forge('layouts/' . $layout);
         $l->page = $page;
-        $l->content = Layout_Ice::do_content($content, $page, $title);
-        $l->header = Layout_Ice::do_header($page);
+        $l->content = Layout_Ice::do_content($content, $page, $title, $page_data);
+        $l->header = Layout_Ice::do_header($page, $auth);
         $l->footer = Layout_Ice::do_footer();
         return $l;
     }
@@ -91,8 +91,9 @@ class Layout_Ice {
         Layout_Ice::do_header($page = 0)
             $page = Page number (default 0)
     */
-    public static function do_header($page = 0){
+    public static function do_header($page = 0, $auth = null){
         $h = View::forge(Layout_Ice::component('header'));
+        $h->auth = $auth;
         $h->menu = Layout_Site::nav_menu();
         $h->page = $page;
         return $h;
@@ -108,7 +109,7 @@ class Layout_Ice {
             @Returns formated content section.
 
     */
-    public static function do_content($content, $page = 0, $title = '', $type = 'V'){
+    public static function do_content($content, $page = 0, $title = '', $page_data = array(), $type = 'V'){
         $search_loc = Layout_Ice::page($content);
         $c = "";
         if($type === 'P' || $type === 'p'){
@@ -116,11 +117,13 @@ class Layout_Ice {
             $c = Presenter::forge($search_loc);
             $c->page = $page;
             $c->title = $title;
+            $c->page_data = $page_data;
         } else {
             //load content from view
             $c = View::forge($search_loc);
             $c->page = $page;
             $c->title = $title;
+            $c->page_data = $page_data;
         }
         return $c;
     }

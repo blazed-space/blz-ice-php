@@ -12,10 +12,14 @@
       </div>
 
       <div class="lg:py-24">
-        <h2 class="text-3xl font-bold sm:text-4xl">Ice for PHP</h2>
+        <h2 class="text-3xl font-bold sm:text-4xl">About Ice/PHP</h2>
 
         <p class="mt-4 text-gray-600">
           PHP Ice is built with FuelPHP and BundleFU.
+          Authentication is also supported, out-of-the box; we use Delight-im/Auth.
+          This framework also includes various static tools and functions for static content generation.
+          <br />
+          <a class="text-red-500 hover:underline" href="<?php echo Uri::base(); ?>docs/">Explore Documentation</a>
         </p>
 
         <a

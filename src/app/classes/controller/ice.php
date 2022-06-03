@@ -10,6 +10,8 @@ class Controller_Ice extends Controller{
 		$this->layout = Layout_Ice::new_document();
 		$this->layout->page_layout = 'basic';
         $this->layout->response = "";
+		$this->layout->auth = Util_Auth::get_auth();
+		$this->layout->page_data = array();
 	}
 	/*
 		after($request)
@@ -21,7 +23,8 @@ class Controller_Ice extends Controller{
 		}
         $this->layout->bundle = Layout_Ice::create_bundle($this->layout->page);
         $this->layout->body = Layout_Ice::do_layout($this->layout->content, 
-        $this->layout->title, $this->layout->page, $this->layout->page_layout);
+        $this->layout->title, $this->layout->page, $this->layout->page_layout, $this->layout->auth,
+        $this->layout->page_data);
         return Response::forge(\ice\Util_Mini::html($this->layout->render()));
 	}
 }
